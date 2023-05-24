@@ -1,16 +1,11 @@
-
-
-
-
-
-const http = require('http'); // Add the 'http' module alongside 'https'
-const https = require('https'); // Add the 'http' module alongside 'https'
-const url = require('url');
+const http = require("http"); // Add the 'http' module alongside 'https'
+const https = require("https"); // Add the 'http' module alongside 'https'
+const url = require("url");
 
 function fetch(method, urlStr, headers = {}, body) {
   return new Promise((resolve, reject) => {
     const parsedUrl = url.parse(urlStr);
-    const isHttps = parsedUrl.protocol === 'https:'; // Check if the URL protocol is HTTPS
+    const isHttps = parsedUrl.protocol === "https:"; // Check if the URL protocol is HTTPS
 
     const options = {
       hostname: parsedUrl.hostname,
@@ -22,13 +17,13 @@ function fetch(method, urlStr, headers = {}, body) {
     const requestModule = isHttps ? https : http; // Select the appropriate request module based on the URL protocol
 
     const req = requestModule.request(options, (res) => {
-      let data = '';
+      let data = "";
 
-      res.on('data', (chunk) => {
+      res.on("data", (chunk) => {
         data += chunk;
       });
 
-      res.on('end', () => {
+      res.on("end", () => {
         // Resolve with the response object
         resolve({
           statusCode: res.statusCode,
@@ -38,13 +33,13 @@ function fetch(method, urlStr, headers = {}, body) {
       });
     });
 
-    req.on('error', (error) => {
+    req.on("error", (error) => {
       // Reject with the error object
       reject(error);
     });
 
     if (body) {
-      req.write(typeof body === 'string' ? body : JSON.stringify(body));
+      req.write(typeof body === "string" ? body : JSON.stringify(body));
     }
 
     req.end();

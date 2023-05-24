@@ -1,1 +1,70 @@
-[{"tmdb_id":603692,"poster_path":"https://image.tmdb.org/t/p/w300/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg","backdrop_path":"https://image.tmdb.org/t/p/w300/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg","country":"foreign","title":"John Wick: Chapter 4","overview":"With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.","type":"movie","release_date":"2023-03-22","video":[{"resolution":"480","language":"english","href":"http://hd1.dlmania.com/Hollywood/John%20Wick%20-%20Chapter%204%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20BRRip%20HD%20(HDMp4Mania).mp4"}]},{"tmdb_id":1123960,"poster_path":"https://image.tmdb.org/t/p/w300/i8wMjVoQOyo9XUOrQk60WCcklCj.jpg","backdrop_path":"https://image.tmdb.org/t/p/w300/w2FsfkRBuoh9CXWWj0wdFiMkSBB.jpg","country":"India","title":"Sirf Ek Bandaa Kaafi Hai","overview":"An ordinary lawyer is out to fight an extraordinary case! But can he win against a powerful godman accused of assaulting a minor and deliver justice to the victim?","type":"movie","release_date":"2023-05-23","video":[{"resolution":"480","language":"hindi","href":"http://hd1.dlmania.com/Bollywood/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip%20HD%20(HDMp4Mania).mp4"}]},{"tmdb_id":758336,"poster_path":"https://image.tmdb.org/t/p/w300/usfDx1g1eN9eZ8kxfrbLRkKVjit.jpg","backdrop_path":"https://image.tmdb.org/t/p/w300/ztWbwSlQNduTUFomNP2GnTPduFm.jpg","country":"foreign","title":"Love Again","overview":"Mira Ray, dealing with the loss of her fiancé, sends a series of romantic texts to his old cell phone number… not realizing the number was reassigned to Rob Burns' new work phone. A journalist, Rob is captivated by the honesty in the beautifully confessional texts. When he’s assigned to write a profile of megastar Céline Dion, he enlists her help in figuring out how to meet Mira in person and win her heart.","type":"movie","release_date":"2023-05-04","video":[{"resolution":"480","language":"english","href":"http://hd1.dlmania.com/Hollywood/Love%20Again%20-%20BRRip/Love%20Again%20-%20BRRip%20HD%20(HDMp4Mania).mp4"}]},{"tmdb_id":603692,"poster_path":"https://image.tmdb.org/t/p/w300/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg","backdrop_path":"https://image.tmdb.org/t/p/w300/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg","country":"foreign","title":"John Wick: Chapter 4","overview":"With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.","type":"movie","release_date":"2023-03-22","video":[{"resolution":"480","language":"hindi dubbed","href":"http://hd1.dlmania.com/Hollywood%20(Hindi%20Dubbed)/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip%20HD%20(HDMp4Mania).mp4"}]}]
+[
+  {
+    "tmdb_id": 603692,
+    "poster_path": "https://image.tmdb.org/t/p/w300/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w300/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg",
+    "country": "foreign",
+    "title": "John Wick: Chapter 4",
+    "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+    "type": "movie",
+    "release_date": "2023-03-22",
+    "video": [
+      {
+        "resolution": "480",
+        "language": "english",
+        "href": "http://hd1.dlmania.com/Hollywood/John%20Wick%20-%20Chapter%204%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20BRRip%20HD%20(HDMp4Mania).mp4"
+      }
+    ]
+  },
+  {
+    "tmdb_id": 1123960,
+    "poster_path": "https://image.tmdb.org/t/p/w300/i8wMjVoQOyo9XUOrQk60WCcklCj.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w300/w2FsfkRBuoh9CXWWj0wdFiMkSBB.jpg",
+    "country": "India",
+    "title": "Sirf Ek Bandaa Kaafi Hai",
+    "overview": "An ordinary lawyer is out to fight an extraordinary case! But can he win against a powerful godman accused of assaulting a minor and deliver justice to the victim?",
+    "type": "movie",
+    "release_date": "2023-05-23",
+    "video": [
+      {
+        "resolution": "480",
+        "language": "hindi",
+        "href": "http://hd1.dlmania.com/Bollywood/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip%20HD%20(HDMp4Mania).mp4"
+      }
+    ]
+  },
+  {
+    "tmdb_id": 758336,
+    "poster_path": "https://image.tmdb.org/t/p/w300/usfDx1g1eN9eZ8kxfrbLRkKVjit.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w300/ztWbwSlQNduTUFomNP2GnTPduFm.jpg",
+    "country": "foreign",
+    "title": "Love Again",
+    "overview": "Mira Ray, dealing with the loss of her fiancé, sends a series of romantic texts to his old cell phone number… not realizing the number was reassigned to Rob Burns' new work phone. A journalist, Rob is captivated by the honesty in the beautifully confessional texts. When he’s assigned to write a profile of megastar Céline Dion, he enlists her help in figuring out how to meet Mira in person and win her heart.",
+    "type": "movie",
+    "release_date": "2023-05-04",
+    "video": [
+      {
+        "resolution": "480",
+        "language": "english",
+        "href": "http://hd1.dlmania.com/Hollywood/Love%20Again%20-%20BRRip/Love%20Again%20-%20BRRip%20HD%20(HDMp4Mania).mp4"
+      }
+    ]
+  },
+  {
+    "tmdb_id": 603692,
+    "poster_path": "https://image.tmdb.org/t/p/w300/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/w300/fgw4rFs4XMWdJTWp1eMacHKQqbZ.jpg",
+    "country": "foreign",
+    "title": "John Wick: Chapter 4",
+    "overview": "With the price on his head ever increasing, John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.",
+    "type": "movie",
+    "release_date": "2023-03-22",
+    "video": [
+      {
+        "resolution": "480",
+        "language": "hindi dubbed",
+        "href": "http://hd1.dlmania.com/Hollywood%20(Hindi%20Dubbed)/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip%20HD%20(HDMp4Mania).mp4"
+      }
+    ]
+  }
+]
