@@ -4,5 +4,8 @@
 
 
 from common.websites import mp4mania
-#newValue=enter new value here
-#mp4mania(9010,newValue,False)
+
+
+#oldValue=9016
+#newValue=9016
+#mp4mania(oldValue,newValue,False)

@@ -1,20 +1,27 @@
-const https = require('https');
+
+
+
+
+
+const http = require('http'); // Add the 'http' module alongside 'https'
+const https = require('https'); // Add the 'http' module alongside 'https'
 const url = require('url');
 
-function fetch(method, urlStr, headers = {},body) {
+function fetch(method, urlStr, headers = {}, body) {
   return new Promise((resolve, reject) => {
     const parsedUrl = url.parse(urlStr);
+    const isHttps = parsedUrl.protocol === 'https:'; // Check if the URL protocol is HTTPS
 
     const options = {
       hostname: parsedUrl.hostname,
       path: parsedUrl.path,
       method: method.toUpperCase(),
-      headers: {
-        ...headers
-      }
+      headers: { ...headers },
     };
 
-    const req = https.request(options, (res) => {
+    const requestModule = isHttps ? https : http; // Select the appropriate request module based on the URL protocol
+
+    const req = requestModule.request(options, (res) => {
       let data = '';
 
       res.on('data', (chunk) => {
@@ -26,7 +33,7 @@ function fetch(method, urlStr, headers = {},body) {
         resolve({
           statusCode: res.statusCode,
           headers: res.headers,
-          body: data
+          body: data,
         });
       });
     });
