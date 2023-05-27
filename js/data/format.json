@@ -1,41 +1,68 @@
-[{
-  "id":1,
-  "tmdb_id":"",
-  "size":"",
-  "quality":"480",
-  "year":"",
-  "name":"John Wick 4",
-  "url":"http://hd1.dlmania.com/Hollywood/John%20Wick%20-%20Chapter%204%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
-  "country":"foreign",
-  "language":"english"
-}, {
-  "id":2,
-  "tmdb_id":"",
-  "size":"",
-  "quality":"480",
-  "year":"",
-  "name":"Sirf Ek Bandaa Kaafi Hai",
-  "url":"http://hd1.dlmania.com/Bollywood/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip/Sirf%20Ek%20Bandaa%20Kaafi%20Hai%20-%20WebRip%20HD%20(HDMp4Mania).mp4",
-  "country":"India",
-  "language":"hindi"
-}, {
-  "id":3,
-  "tmdb_id":"",
-  "size":"",
-  "quality":"480",
-  "year":"",
-  "name":"Love Again",
-  "url":"http://hd1.dlmania.com/Hollywood/Love%20Again%20-%20BRRip/Love%20Again%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
-  "country":"foreign",
-  "language":"english"
-}, {
-  "id":4,
-  "tmdb_id":"",
-  "size":"",
-  "quality":"480",
-  "year":"",
-  "name":"John Wick 4",
-  "url":"http://hd1.dlmania.com/Hollywood%20(Hindi%20Dubbed)/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip/John%20Wick%20-%20Chapter%204%20-%20Hindi%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
-  "country":"foreign",
-  "language":"hindi dubbed"
-}]
+[
+  {
+    "id": 1,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Mothers Day",
+    "url": "http://hd1.dlmania.com/Hollywood/Mothers%20Day%20-%20BRRip/Mothers%20Day%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
+    "country": "foreign",
+    "language": "english"
+  },
+  {
+    "id": 2,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Operation Mayfair",
+    "url": "http://hd1.dlmania.com/Bollywood/Operation%20Mayfair%20-%20WebRip/Operation%20Mayfair%20-%20WebRip%20HD%20(HDMp4Mania).mp4",
+    "country": "India",
+    "language": "hindi"
+  },
+  {
+    "id": 3,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Bheed",
+    "url": "http://hd1.dlmania.com/Bollywood/Bheed%20-%20WebRip/Bheed%20-%20WebRip%20HD%20(HDMp4Mania).mp4",
+    "country": "India",
+    "language": "hindi"
+  },
+  {
+    "id": 4,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Malum",
+    "url": "http://hd1.dlmania.com/Hollywood/Malum%20-%20BRRip/Malum%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
+    "country": "foreign",
+    "language": "english"
+  },
+  {
+    "id": 5,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Renfield",
+    "url": "http://hd1.dlmania.com/Hollywood%20(Hindi%20Dubbed)/Renfield%20-%20Hindi%20-%20BRRip/Renfield%20-%20Hindi%20-%20BRRip%20HD%20(HDMp4Mania).mp4",
+    "country": "foreign",
+    "language": "hindi dubbed"
+  },
+  {
+    "id": 6,
+    "tmdb_id": "",
+    "size": "",
+    "quality": "480",
+    "year": "",
+    "name": "Bhediya",
+    "url": "http://hd1.dlmania.com/Bollywood/Bhediya%20-%20WebRip/Bhediya%20-%20WebRip%20HD%20(HDMp4Mania).mp4",
+    "country": "India",
+    "language": "hindi"
+  }
+]
