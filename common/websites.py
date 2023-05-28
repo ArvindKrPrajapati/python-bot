@@ -3,6 +3,37 @@
 
 
 import common
+def dl11Sermovies(url):
+  output=[]
+  path="./data/dl11sermovies.json"
+  soup=common.soup(url)
+  i=0
+  links=common.extractLink(soup,[0],url)
+  print("movie found"+str(len(links)))
+  for link in links:
+    i+=1
+    print("----loading: "+str(i))
+    soup2=common.soup(link["href"])
+    real_links=common.extractLink(soup2,[0],link["href"],link["text"])
+    output+=real_links
+  print(len(output))
+  common.export_json(path,output)
+  
+  
+def sermovies(url):
+  output=[]
+  path="./data/sermovies.json"
+  soup=common.soup(url)
+  i=0
+  links=common.extractSermoviesLink(soup,[0,1],url)
+  for link in links:
+    i+=1
+    print("----loading: "+str(i))
+    soup2=common.soup(link["link"])
+    real_links=common.extractSermoviesLink(soup2,[0,1],link["link"],link["text"])
+    output+=real_links
+  print(len(output))
+  common.export_json(path,output)
 
 def mp4mania(start=1,end=8938,append=False):
   skip=[0,4,5]
@@ -35,4 +66,4 @@ def mp4mania(start=1,end=8938,append=False):
   print("Exporting data to mp4mania.json in data folder...")
   common.export_json(path,data)
   print("done ✓")
-  
+

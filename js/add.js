@@ -1,23 +1,43 @@
-const fetch = require("./common/fetch");
 
-const url = "https://mytodo-api.cyclic.app/v1/mverse";
+
+
+
+const fetch = require('node-fetch');
+
+const url = "https://mytodo-api.cyclic.app/v1/mverse/add-many";
 
 const movieArr = require("./data/tmdb.json");
-console.log("loading.....");
-const headers = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
-fetch("POST", url + "/add-many", headers, movieArr)
-  .then((res) => res.body)
-  .then((data) => {
-    const res = JSON.parse(data);
-    if (res.success) {
-      console.log("added all data to database");
-    } else {
-      console.log(res);
+const jump=100
+
+
+const add=async ()=>{
+    for (var i = 0; i < movieArr.length; i=i+jump) {
+      const chunk=movieArr.slice(i,i+jump)
+      console.log("loading...")
+     try {
+       const res=await fetch(url,
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(chunk)
+          })
+       const d=await res.json()
+
+            if (d.success) {
+              console.log("\x1b[32m","saved");
+            } else {
+              console.log("\x1b[31m","error while saving",res);
+            }
+     } catch (e) {
+       console.log("\x1b[31m","error while saving",e);
+          
+     }
+
+       
     }
-  })
-  .catch((e) => {
-    console.log("erro: ", e);
-  });
+}
+
+add()
+            

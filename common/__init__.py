@@ -14,12 +14,15 @@ def soup(url):
     return e
    
 
-def extractLink(soup,skip,url=""):
+def extractLink(soup,skip,url="",name=""):
   links=[]
   for i,link in enumerate(soup.find_all("a")):
     if(i in skip):
       continue
     link_dict={}
+    if name!="":
+      link_dict["name"]=name
+      
     link_dict["text"]=link.text.strip()
     href=link.get("href")
     if url:
@@ -54,4 +57,45 @@ def export_json(file_nane,data):
 def read_json(file_nane):
   with open(file_nane,"r") as f:
     data=json.load(f)
+    return data
+    
+    
+def extractSermoviesLink(soup,skip_array=[],url="",name=""):
+    data = []
+
+    rows = soup.find_all('tr')
+    for i, row in enumerate(rows):
+        if i in skip_array:
+            continue
+
+        td_elements = row.find_all('td')
+
+        row_data = {}
+        if name!="":
+          row_data["name"]=name
+        for td in td_elements:
+            class_name = td.get('class')
+            if class_name is not None:
+                class_name = ' '.join(class_name)
+
+            if url != "":
+                a_tag = td.find('a')
+                if a_tag:
+                    href = a_tag.get('href')
+                    if href:
+                        href = url + href
+                        text = a_tag.get_text(strip=True)
+                        row_data['text'] = text
+
+            text = td.get_text(strip=True)
+            if class_name:
+                row_data[class_name] = text
+            else:
+                row_data['value'] = text
+
+            if url != "" and href:
+                row_data['link'] = href
+
+        data.append(row_data)
+
     return data
