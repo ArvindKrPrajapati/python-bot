@@ -26,6 +26,7 @@ def sermovies(url):
   soup=common.soup(url)
   i=0
   links=common.extractSermoviesLink(soup,[0,1],url)
+  print("Total :"+str(len(links)))
   for link in links:
     i+=1
     print("----loading: "+str(i))
