@@ -74,6 +74,7 @@ const movieObj = (match, movie) => {
 };
 
 const init = async () => {
+  console.log("total: ", data.length);
   const notfound = [];
   let results = [];
   for (let i = 0; i < data.length; i++) {
@@ -86,6 +87,7 @@ const init = async () => {
           item.title.toString().toLowerCase().trim() ==
           name.toString().toLowerCase().trim()
       );
+      // if (false) {
       if (match?.id) {
         console.log("\x1b[32m", "✓ADDED\n");
         results.push(movieObj(match, data[i]));
@@ -102,7 +104,7 @@ const init = async () => {
             console.log(index + 1, " -> ", item.title);
           });
           console.log("press 0 to exit\n");
-          const ans = await readInput("select an option : ");
+          let ans = (await readInput("select an option : ")) || 1;
           if (ans == 0) {
             continue;
           }
