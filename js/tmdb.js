@@ -1,7 +1,3 @@
-
-
-
-
 let data = require("./data/format.json");
 const fetch = require("./common/fetch");
 const fs = require("fs");
@@ -45,28 +41,35 @@ const readInput = (question) => {
   );
 };
 const movieObj = (match, movie) => {
- 
   const imgUrl = "https://image.tmdb.org/t/p/w300";
   const result = {};
   result["tmdb_id"] = match.id;
   result["poster_path"] = imgUrl + match.poster_path;
   result["backdrop_path"] = imgUrl + match.backdrop_path;
-  result["country"] = movie?.country ? movie.country : match.original_language=="hi" ? "India" : "foreign";
+  result["country"] = movie?.country
+    ? movie.country
+    : match.original_language == "hi"
+    ? "India"
+    : "foreign";
   result["title"] = match.title;
   result["overview"] = match.overview || "not found";
   result["type"] = "movie";
-  result["release_date"] = match.release_date || "0";
+  result["release_date"] = new Date(match.release_date || "0");
   result["video"] = [
     {
       resolution: movie.quality,
-      source:movie.source,
-      size:movie.size,
-      language: movie?.language ? movie.language : match.original_language =="hi" ? "hindi":"English",
+      source: movie.source,
+      size: movie.size,
+      language: movie?.language
+        ? movie.language
+        : match.original_language == "hi"
+        ? "hindi"
+        : "English",
       href: movie.url,
       href_two: movie?.url_two,
     },
   ];
-  
+
   return result;
 };
 
@@ -92,19 +95,20 @@ const init = async () => {
           console.log("\x1b[32m", "ADDED\n");
           continue;
         }
+        // if (false) {
         if (movie.results.length) {
-          console.log("\n")
-           movie.results.map((item, index) => {
-             console.log(index + 1, " -> ", item.title);
+          console.log("\n");
+          movie.results.map((item, index) => {
+            console.log(index + 1, " -> ", item.title);
           });
-           console.log("press 0 to exit\n");
-            const ans = await readInput("select an option : ");
-            if (ans == 0) {
-              continue;
-            }
-           const _match = movie.results[Number(ans - 1)];
-           results.push(movieObj(_match, data[i]));
-           console.log("\x1b[32m", "✓ADDED\n");
+          console.log("press 0 to exit\n");
+          const ans = await readInput("select an option : ");
+          if (ans == 0) {
+            continue;
+          }
+          const _match = movie.results[Number(ans - 1)];
+          results.push(movieObj(_match, data[i]));
+          console.log("\x1b[32m", "✓ADDED\n");
         } else {
           console.log("not found\n");
           notfound.push(data[i]);

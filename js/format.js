@@ -1,11 +1,9 @@
-
 const exportAsCsv = (data) => {
   const fs = require("fs");
   data = JSON.stringify(data);
   fs.writeFileSync("./data/format.json", data);
   console.log("exported in results.json");
 };
-
 
 const formatMp4mania = async () => {
   const data = require("../data/mp4mania.json");
@@ -18,15 +16,24 @@ const formatMp4mania = async () => {
     if (category != "WWE") {
       id++;
       console.log("--------loaing------  : ", id);
-      const { size, width, year } = {size:"",width:"480",year:""}
+      const { size, width, year } = { size: "", width: "standard", year: "" };
       obj["id"] = id;
       obj["tmdb_id"] = "";
       obj["size"] = size;
       obj["quality"] = width;
       obj["year"] = year;
-      obj["name"] = d["Title"].split("-")[0].trim();
+      obj["name"] = d["Title"]
+        .replaceAll("-", "")
+        .replaceAll("BRRip", "")
+        .replaceAll("WebRip", "")
+        .replaceAll("Hindi", "")
+        .replaceAll("DvdScr", "")
+        .replaceAll("SCam", "")
+        .replaceAll("TSRip", "")
+        .replaceAll("DvdRip", "")
+        .trim();
       obj["url"] = d.url_one;
-      obj["country"]=category==="Bollywood" ? "India" :"foreign"
+      obj["country"] = category === "Bollywood" ? "India" : "foreign";
       if (d.url_two) {
         obj["url_two"] = d.url_two;
       }
@@ -39,7 +46,7 @@ const formatMp4mania = async () => {
       } else {
         obj["language"] = "undefined";
       }
-      obj["source"]="mp4mania"
+      obj["source"] = "mp4mania";
       results.push(obj);
     }
   }
@@ -48,100 +55,94 @@ const formatMp4mania = async () => {
   exportAsCsv(results);
 };
 
-
-const formatSermovies=()=>{
+const formatSermovies = () => {
   const data = require("../data/sermovies.json");
-  const results=[]
-  for(let i =0;i<data.length;i++){
-    const item=data[i]
-    let result={ }
-    let quality=""
-    let name=item.name.replace("/","")
-    const yearArr=name.split(".")
-    let year =yearArr[yearArr.length-1]
-    if(isNaN(year)){
-      name=yearArr.join(" ")
-    }else{
-      name=yearArr.slice(0,yearArr.length-1).join(" ")
+  const results = [];
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    let result = {};
+    let quality = "";
+    let name = item.name.replace("/", "");
+    const yearArr = name.split(".");
+    let year = yearArr[yearArr.length - 1];
+    if (isNaN(year)) {
+      name = yearArr.join(" ");
+    } else {
+      name = yearArr.slice(0, yearArr.length - 1).join(" ");
     }
-    
-    
-    if(item.link.includes("480p")){
-      quality="480p"
-    }else if(item.link.includes("720p")){
-      quality="720p"
-    }else if(item.link.includes("1080p")){
-      quality="1080p"
-    }if(item.link.includes("HDCAM")){
-      quality="HDCAM"
-    }
-    
-    if(item.link.includes(".mp4") || item.link.includes(".mkv")){
-       if(quality){
-        results.push(result)
-       }
-    }
-    result["name"]=name.replaceAll("-"," ")
-    result["url"]=item.link
-    result["quality"]=quality
-    result["size"]=item.size
-    result["source"]="sermovies"
-    
-  }
-  console.log(results.length)
- exportAsCsv(results)
-}
 
-const formatdl11Sermovies=()=>{
+    if (item.link.includes("480p")) {
+      quality = "480p";
+    } else if (item.link.includes("720p")) {
+      quality = "720p";
+    } else if (item.link.includes("1080p")) {
+      quality = "1080p";
+    }
+    if (item.link.includes("HDCAM")) {
+      quality = "HDCAM";
+    }
+
+    if (item.link.includes(".mp4") || item.link.includes(".mkv")) {
+      if (quality) {
+        results.push(result);
+      }
+    }
+    result["name"] = name.replaceAll("-", " ");
+    result["url"] = item.link;
+    result["quality"] = quality;
+    result["size"] = item.size;
+    result["source"] = "sermovies";
+  }
+  console.log(results.length);
+  exportAsCsv(results);
+};
+
+const formatdl11Sermovies = () => {
   const data = require("../data/dl11sermovies.json");
-  const results=[]
-  for(let i =0;i<data.length;i++){
-    const item=data[i]
-    let result={ }
-    let quality=""
-    let name=item.name.replace("/","")
-    const yearArr=name.split(".")
-    let year =yearArr[yearArr.length-1]
-    if(isNaN(year)){
-      name=yearArr.join(" ")
-    }else{
-      name=yearArr.slice(0,yearArr.length-1).join(" ")
+  const results = [];
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    let result = {};
+    let quality = "";
+    let name = item.name.replace("/", "");
+    const yearArr = name.split(".");
+    let year = yearArr[yearArr.length - 1];
+    if (isNaN(year)) {
+      name = yearArr.join(" ");
+    } else {
+      name = yearArr.slice(0, yearArr.length - 1).join(" ");
     }
-    
-    
-    if(item.href.includes("480p")){
-      quality="480p"
-    }else if(item.href.includes("720p")){
-      quality="720p"
-    }else if(item.href.includes("1080p")){
-      quality="1080p"
-    }else if(item.href.includes("HDCAM")){
-      quality="HDCAM"
-    }else if(item.href.includes("2160p")){
-      quality="2160p"
-    }else if(item.href.includes(".HDTS.")){
-      quality="HD"
-    }
-    
-    
-    if(item.href.includes(".mp4") || item.href.includes(".mkv")){
-       if(quality){
-        results.push(result)
-       }
-    }else if(!item.href.includes(".srt") && !item.href.includes(".jpg") ){
-   console.log(item.href,"\n")
-     
-   }
-    
-    result["name"]=name.replaceAll("-"," ")
-    result["url"]=item.href
-    result["quality"]=quality
-    result["size"]=item?.size
-    result["source"]="dl11.sermovies"
-    
-  }
-  console.log(results.length)
- exportAsCsv(results)
-}
 
-formatdl11Sermovies();
+    if (item.href.includes("480p")) {
+      quality = "480p";
+    } else if (item.href.includes("720p")) {
+      quality = "720p";
+    } else if (item.href.includes("1080p")) {
+      quality = "1080p";
+    } else if (item.href.includes("HDCAM")) {
+      quality = "HDCAM";
+    } else if (item.href.includes("2160p")) {
+      quality = "2160p";
+    } else if (item.href.includes(".HDTS.")) {
+      quality = "HD";
+    }
+
+    if (item.href.includes(".mp4") || item.href.includes(".mkv")) {
+      if (quality) {
+        results.push(result);
+      }
+    } else if (!item.href.includes(".srt") && !item.href.includes(".jpg")) {
+      console.log(item.href, "\n");
+    }
+
+    result["name"] = name.replaceAll("-", " ");
+    result["url"] = item.href;
+    result["quality"] = quality;
+    result["size"] = item?.size;
+    result["source"] = "dl11.sermovies";
+  }
+  console.log(results.length);
+  exportAsCsv(results);
+};
+
+formatSermovies();
