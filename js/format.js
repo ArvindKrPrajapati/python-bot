@@ -87,6 +87,9 @@ const formatSermovies = () => {
         results.push(result);
       }
     }
+    if(item.link.endsWith("/")){
+      console.log(item.link,"\n")
+    }
     result["name"] = name.replaceAll("-", " ");
     result["url"] = item.link;
     result["quality"] = quality;
@@ -145,4 +148,4 @@ const formatdl11Sermovies = () => {
   exportAsCsv(results);
 };
 
-formatMp4mania();
+formatSermovies();

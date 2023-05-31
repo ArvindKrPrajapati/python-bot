@@ -106,13 +106,14 @@ const init = async () => {
           console.log("press 0 to exit\n");
           let ans = (await readInput("select an option : ")) || 1;
           if (ans == 0) {
+            notfound.push(data[i]);
             continue;
           }
           const _match = movie.results[Number(ans - 1)];
           results.push(movieObj(_match, data[i]));
           console.log("\x1b[32m", "✓ADDED\n");
         } else {
-          console.log("not found\n");
+          console.log("\x1b[31m%s\x1b[0m","not found\n");
           notfound.push(data[i]);
         }
       }
