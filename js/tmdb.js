@@ -97,8 +97,8 @@ const init = async () => {
           console.log("\x1b[32m", "ADDED\n");
           continue;
         }
-        if (false) {
-          // if (movie.results.length) {
+       // if (false) {
+         if (movie.results.length) {
           console.log("\n");
           movie.results.map((item, index) => {
             console.log(index + 1, " -> ", item.title);

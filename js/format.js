@@ -145,4 +145,4 @@ const formatdl11Sermovies = () => {
   exportAsCsv(results);
 };
 
-formatSermovies();
+formatMp4mania();
