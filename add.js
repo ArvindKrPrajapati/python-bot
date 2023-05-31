@@ -26,7 +26,7 @@ const add=async ()=>{
        const d=await res.json()
 
             if (d.success) {
-              console.log("\x1b[32m","saved");
+              console.log("\x1b[32m%s\x1b[0m","saved: ",chunk.length);
             } else {
               console.log("\x1b[31m","error while saving",res);
             }

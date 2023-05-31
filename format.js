@@ -2,11 +2,11 @@ const exportAsCsv = (data) => {
   const fs = require("fs");
   data = JSON.stringify(data);
   fs.writeFileSync("./data/format.json", data);
-  console.log("exported in results.json");
+  console.log("exported in format.json");
 };
 
 const formatMp4mania = async () => {
-  const data = require("../data/mp4mania.json");
+  const data = require("./data/mp4mania.json");
   const results = [];
   var id = 0;
   for (let i = 0; i < data.length; i++) {
@@ -56,7 +56,7 @@ const formatMp4mania = async () => {
 };
 
 const formatSermovies = () => {
-  const data = require("../data/sermovies.json");
+  const data = require("./data/sermovies.json");
   const results = [];
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
@@ -101,7 +101,7 @@ const formatSermovies = () => {
 };
 
 const formatdl11Sermovies = () => {
-  const data = require("../data/dl11sermovies.json");
+  const data = require("./data/dl11sermovies.json");
   const results = [];
   for (let i = 0; i < data.length; i++) {
     const item = data[i];
@@ -148,4 +148,46 @@ const formatdl11Sermovies = () => {
   exportAsCsv(results);
 };
 
-formatSermovies();
+
+
+const readInput = (question) => {
+ const readline = require("readline");
+  const interface = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  return new Promise((resolve) =>
+    interface.question(question, (answer) => {
+      interface.close();
+      resolve(answer);
+    })
+  );
+};
+
+
+(async()=>{
+  const sources=["mp4mania","sermovies"]
+  console.log("\n\nplease select your source \n")
+  sources.map((s,index)=>{
+    console.log(index+1," - ",s)
+  })
+  console.log("\n")
+  const ans=await readInput("answer : ")
+  if(ans){
+    switch (ans) {
+      case '1':
+        formatMp4mania()
+        break;
+      case '2':
+        formatSermovies()
+        break;
+      default:
+    console.log("\x1b[31m%s\x1b[0m","wrong selection");
+    }
+  }else{
+    console.log("\x1b[31m%s\x1b[0m","nothing was selected");
+  }
+})()
+
+

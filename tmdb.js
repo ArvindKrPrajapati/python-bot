@@ -1,5 +1,9 @@
+
+
+
+
 let data = require("./data/format.json");
-const fetch = require("./common/fetch");
+const fetch = require('node-fetch');
 const fs = require("fs");
 const readline = require("readline");
 
@@ -13,12 +17,15 @@ const tmdb = async (name) => {
   console.log("-----loading-----");
   const url = "https://api.themoviedb.org/3/search/movie?query=" + name;
   try {
-    const data = await fetch("GET", url, {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhN2JhYjIwYmZiMDUzOTNlMDFiZjFmZjg1OTY2NzI1NSIsInN1YiI6IjYyZGJjZDhkZTMyM2YzMDM2YWRlMmE3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A-ZzzYQ4QU7SqOzUJv_Wfpeh0hDYXA2aIUQ3Twggzsw",
-    });
+    const data = await fetch(url, {
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhN2JhYjIwYmZiMDUzOTNlMDFiZjFmZjg1OTY2NzI1NSIsInN1YiI6IjYyZGJjZDhkZTMyM2YzMDM2YWRlMmE3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.A-ZzzYQ4QU7SqOzUJv_Wfpeh0hDYXA2aIUQ3Twggzsw",
+         'Content-Type': 'application/json'
+        },
+            method: "GET",
+      });
 
-    return JSON.parse(data.body);
+    return data.json();
   } catch (e) {
     console.log("error");
     return {
