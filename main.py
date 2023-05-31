@@ -5,7 +5,7 @@ from common.websites import mp4mania,sermovies,dl11Sermovies
 #newValue = 9038
 #mp4mania(oldValue,newValue,False)
 
-url="http://dl6.sermovie.xyz/Movie/2018/"
+url="http://dl6.sermovie.xyz/Movie/2017/"
 sermovies(url)
 
 # url="http://dl11.sermovie.xyz/Movies/2023/"
