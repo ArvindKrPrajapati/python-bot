@@ -50,7 +50,7 @@ const readInput = (question) => {
 const movieObj = (match, movie) => {
   const imgUrl = "https://image.tmdb.org/t/p/w300";
   const result = {};
-  result["tmdb_id"] = match.id;
+  result["tmdb_id"] = match.id.toString();
   result["poster_path"] = imgUrl + match.poster_path;
   result["backdrop_path"] = imgUrl + match.backdrop_path;
   result["country"] = movie?.country
