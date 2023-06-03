@@ -36,6 +36,29 @@ def sermovies(url):
   print(len(output))
   common.export_json(path,output)
 
+links=[]
+def sermovies_series(url,name):
+  soup=common.soup(url)
+  items=common.extractSermoviesLink(soup,[0,1],url,name)
+  print("Total: "+str(len(items)))
+  for i,item in enumerate(items):
+    link=item["link"]
+    if link.endswith("/"):
+      sermovies_series(link,name)
+    else:
+      links.append({**item,"link":link})
+
+def sermovies_series_recursive(url):
+  path="./data/sermoviestv.2022.json"
+  soup=common.soup(url)
+  items=common.extractSermoviesLink(soup,[0,1],url)
+  print("Total : "+str(len(items)))
+  for i,item in enumerate(items):
+    print("***** "+str(i+1)+" "+item["text"]+" ******")
+    sermovies_series(item["link"],item["text"])
+  common.export_json(path,links)
+  print("exported to sermoviestv.json and length is : "+str(len(links)))
+ 
 def mp4mania(start=1,end=8938,append=False):
   skip=[0,4,5]
   path="./data/mp4mania.json"

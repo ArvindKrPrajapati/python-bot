@@ -13,9 +13,9 @@ const exportAsCsv = (data, filename) => {
   console.log("exported in" + filename);
 };
 
-const tmdb = async (name) => {
+const tmdb = async (name,type="movie") => {
   console.log("-----loading-----");
-  const url = "https://api.themoviedb.org/3/search/movie?query=" + name;
+  const url = "https://api.themoviedb.org/3/search/"+type+"?query=" + name;
   try {
     const data = await fetch(url, {
       headers: {
@@ -58,9 +58,9 @@ const movieObj = (match, movie) => {
     : match.original_language == "hi"
     ? "India"
     : "foreign";
-  result["title"] = match.title;
+  result["title"] = match.title || match.name;
   result["overview"] = match.overview || "not found";
-  result["type"] = "movie";
+  result["type"] = movie.type ? movie.type : "movie";
   result["release_date"] = new Date(match.release_date || "0");
   result["video"] = [
     {
@@ -76,6 +76,12 @@ const movieObj = (match, movie) => {
       href_two: movie?.url_two,
     },
   ];
+  if(movie.type=="tv"){
+    result["tmdb_id"]="tv"+match.id
+    result["season"]=movie.season
+    result["episode"]=movie.episode
+    result["release_date"] = new Date(match.first_air_date || "0");
+  }
 
   return result;
 };
@@ -130,4 +136,81 @@ const init = async () => {
   exportAsCsv(results, "./data/tmdb.json");
   exportAsCsv(notfound, "./data/notfound.json");
 };
-init();
+
+const initTv =async ()=>{
+  console.log("total: ", data.length);
+  const notfound = [];
+  let results = [];
+  
+  for (let i = 0; i < data.length; i++) {
+    const tv=data[i]
+    const name = data[i].name.trim();
+    console.log(i + 1, " : ", name);
+    const movie = await tmdb(name,"tv");
+    if (movie.results) {
+      const match = movie?.results.find(
+        (item) =>
+          item.name.toString().toLowerCase().trim() ==
+          name.toString().toLowerCase().trim()
+      );
+      // if (false) {
+      if (match?.id) {
+        tv.data.map(item=>{
+         results.push(movieObj(match,item));
+        })
+        console.log("\x1b[32m", "✓ADDED\n");
+      } else {
+        if (movie.results.length == 1) {
+           tv.data.map(item=>{
+         results.push(movieObj(movie.results[0],item));
+        })
+         console.log("\x1b[32m", "ADDED\n");
+          continue;
+        }
+       // if (false) {
+         if (movie.results.length) {
+          console.log("\n");
+          movie.results.map((item, index) => {
+            console.log(index + 1, " -> ", item.name);
+          });
+          console.log("press 0 to exit\n");
+          let ans = (await readInput("select an option : ")) || 1;
+          if (ans == 0) {
+            notfound.push(data[i]);
+            continue;
+          }
+          const _match = movie.results[Number(ans - 1)];
+           tv.data.map(item=>{
+         results.push(movieObj(_match,item));
+        }) 
+        console.log("\x1b[32m", "✓ADDED\n");
+        } else {
+          console.log("\x1b[31m%s\x1b[0m","not found\n");
+          notfound.push(data[i]);
+        }
+      }
+    }
+  }
+
+  exportAsCsv(results, "./data/tmdb.json");
+  exportAsCsv(notfound, "./data/notfound.json");
+
+}
+
+(async()=>{
+  console.log("select an option \n")
+  console.log("1: movie")
+  console.log("2: tv \n")
+  const ans=(await readInput("ans : ")) || 1
+  switch (ans) {
+    case '1':
+      init()
+      break;
+    case '2':
+      initTv()
+      break
+    default:
+      // code
+      console.log("choose correct option")
+  }
+})()

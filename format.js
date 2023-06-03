@@ -5,6 +5,68 @@ const exportAsCsv = (data) => {
   console.log("exported in format.json");
 };
 
+const formatSermoviesTv=()=>{
+  const data=require("./data/sermoviestv.json")
+   const results=[]
+    for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    let result = {};
+    let name = item.name.replace("/", "").replaceAll("."," ").trim();
+    let quality = "";
+  const pattern = /S\d+E\d+/;
+  const se=item.text.match(pattern)
+  
+   if(!se){
+     continue
+   }
+   const seArr=se[0].replace("S","").replace("E","-").split("-")
+   
+    if (item.link.includes("480p")) {
+      quality = "480p";
+    } else if (item.link.includes("720p")) {
+      quality = "720p";
+    } else if (item.link.includes("1080p")) {
+      quality = "1080p";
+    }
+    if (item.link.includes("HDCAM")) {
+      quality = "HDCAM";
+    }
+
+    if (item.link.includes(".mp4") || item.link.includes(".mkv")) {
+      if (quality) {
+        results.push(result);
+      }
+    }else{
+      //console.log(item.link)
+    }
+  
+   
+      result["name"] = name;
+    result["url"] = item.link;
+    result["quality"] = quality;
+    result["size"] = item.size;
+    result["source"] = "sermovies";
+    result["type"] = "tv";
+    result["season"]=Number(seArr[0]).toString()
+    result["episode"]=Number(seArr[1]).toString()
+    
+  }
+  console.log("Total links: ",results.length);
+  const groupedObjects = Object.values(results.reduce((result, obj) => {
+  const { name } = obj;
+
+  if (!result[name]) {
+    result[name] = { name, data: [] };
+  }
+
+  result[name].data.push(obj);
+
+  return result;
+}, {}));
+console.log("Total series: ",groupedObjects.length)
+  exportAsCsv(groupedObjects);
+}
+
 const formatMp4mania = async () => {
   const data = require("./data/mp4mania.json");
   const results = [];
@@ -167,7 +229,7 @@ const readInput = (question) => {
 
 
 (async()=>{
-  const sources=["mp4mania","sermovies"]
+  const sources=["mp4mania","sermovies","sermovies tv"]
   console.log("\n\nplease select your source \n")
   sources.map((s,index)=>{
     console.log(index+1," - ",s)
@@ -181,6 +243,9 @@ const readInput = (question) => {
         break;
       case '2':
         formatSermovies()
+        break;
+      case '3':
+        formatSermoviesTv()
         break;
       default:
     console.log("\x1b[31m%s\x1b[0m","wrong selection");
