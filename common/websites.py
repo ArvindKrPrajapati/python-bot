@@ -48,12 +48,14 @@ def sermovies_series(url,name):
     else:
       links.append({**item,"link":link})
 
-def sermovies_series_recursive(url):
-  path="./data/sermoviestv.2022.json"
+def sermovies_series_recursive(url,skip=0):
+  path="./data/sermoviestv.json"
   soup=common.soup(url)
   items=common.extractSermoviesLink(soup,[0,1],url)
+  _items=items[skip:100+skip]
   print("Total : "+str(len(items)))
-  for i,item in enumerate(items):
+  print("scrappimg : "+str(len(_items)))
+  for i,item in enumerate(_items):
     print("***** "+str(i+1)+" "+item["text"]+" ******")
     sermovies_series(item["link"],item["text"])
   common.export_json(path,links)
