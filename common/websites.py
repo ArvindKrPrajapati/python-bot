@@ -48,11 +48,11 @@ def sermovies_series(url,name):
     else:
       links.append({**item,"link":link})
 
-def sermovies_series_recursive(url,skip=0):
+def sermovies_series_recursive(url,skip=0,limit=100):
   path="./data/sermoviestv.json"
   soup=common.soup(url)
   items=common.extractSermoviesLink(soup,[0,1],url)
-  _items=items[skip:100+skip]
+  _items=items[skip:limit+skip]
   print("Total : "+str(len(items)))
   print("scrappimg : "+str(len(_items)))
   for i,item in enumerate(_items):

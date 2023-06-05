@@ -8,9 +8,10 @@ const fs = require("fs");
 const readline = require("readline");
 
 const exportAsCsv = (data, filename) => {
+  const length=data.length
   data = JSON.stringify(data);
   fs.writeFileSync(filename, data);
-  console.log("exported in" + filename);
+  console.log("exported in" + filename+ " length: "+length);
 };
 
 const tmdb = async (name,type="movie") => {
@@ -135,6 +136,9 @@ const init = async () => {
 
   exportAsCsv(results, "./data/tmdb.json");
   exportAsCsv(notfound, "./data/notfound.json");
+      console.log("next step -> run 'node add'")
+   
+  
 };
 
 const initTv =async ()=>{
@@ -194,7 +198,8 @@ const initTv =async ()=>{
 
   exportAsCsv(results, "./data/tmdb.json");
   exportAsCsv(notfound, "./data/notfound.json");
-
+  console.log("next step -> run 'node add'")
+   
 }
 
 (async()=>{

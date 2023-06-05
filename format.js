@@ -238,12 +238,15 @@ const readInput = (question) => {
     switch (ans) {
       case "1":
         formatMp4mania();
+        console.log("next step -> run 'node tmdb'")
         break;
       case "2":
         formatSermovies();
+        console.log("next step -> run 'node tmdb'")
         break;
       case "3":
         formatSermoviesTv();
+        console.log("next step -> run 'node tmdb'")
         break;
       default:
         console.log("\x1b[31m%s\x1b[0m", "wrong selection");
